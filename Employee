@@ -1,0 +1,65 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Employee {
+protected:
+    int empId;
+    string name;
+    double basicSalary;
+
+public:
+    void getEmployeeDetails() {
+        cout << "Enter Employee ID: ";
+        cin >> empId;
+        cout << "Enter Name: ";
+        cin >> name;
+        cout << "Enter Basic Salary: ";
+        cin >> basicSalary;
+    }
+
+    double calculateSalary() {
+        return basicSalary;
+    }
+
+    void displayEmployeeDetails() {
+        cout << "\nEmployee Details" << endl;
+        cout << "ID: " << empId << endl;
+        cout << "Name: " << name << endl;
+        cout << "Basic Salary: " << basicSalary << endl;
+        cout << "Total Salary: " << calculateSalary() << endl;
+    }
+};
+
+class Manager : public Employee {
+private:
+    double allowance;
+
+public:
+    void getManagerDetails() {
+        cout << "Enter Manager Allowance: ";
+        cin >> allowance;
+    }
+
+    double calculateSalary() {
+        return basicSalary + allowance;
+    }
+
+    void displayManagerDetails() {
+        cout << "\nEmployee Details" << endl;
+        cout << "ID: " << empId << endl;
+        cout << "Name: " << name << endl;
+        cout << "Basic Salary: " << basicSalary << endl;
+        cout << "Total Salary: " << calculateSalary() << endl;
+    }
+};
+
+int main() {
+    Manager m;
+
+    m.getEmployeeDetails();
+    m.getManagerDetails();
+    m.displayManagerDetails();
+
+    return 0;
+}
